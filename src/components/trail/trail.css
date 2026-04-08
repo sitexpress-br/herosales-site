@@ -1,0 +1,548 @@
+/* ===== Trail Frame ===== */
+.trail-frame {
+  position: relative;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.trail-frame__stage {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(110, 91, 187, 0.06), transparent 55%),
+    repeating-linear-gradient(0deg, hsla(0, 0%, 100%, 0.03), hsla(0, 0%, 100%, 0.03) 1px, transparent 0, transparent 40px),
+    repeating-linear-gradient(90deg, hsla(0, 0%, 100%, 0.03), hsla(0, 0%, 100%, 0.03) 1px, transparent 0, transparent 40px),
+    radial-gradient(circle at 20% 10%, rgba(110, 91, 187, 0.12), transparent 55%),
+    radial-gradient(circle at 80% 0, rgba(26, 21, 53, 0.6), transparent 50%),
+    #0c1525;
+  border-radius: 32px;
+  min-height: 500px;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 1216 / 500;
+}
+
+/* Stage sweep pseudo-element */
+.trail-frame__stage::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(120deg, transparent, rgba(110, 91, 187, 0.25), transparent 65%);
+  background-size: 250% 100%;
+  mix-blend-mode: screen;
+  opacity: 0.18;
+  pointer-events: none;
+  animation: stageSweep 9s linear infinite;
+}
+
+/* ===== Phase transitions ===== */
+.trail-brand,
+.trail-core,
+.trail-router,
+.trail-risk,
+.trail-frame__canvas {
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.trail-frame[data-phase="1"] .trail-brand,
+.trail-frame[data-phase="1"] .trail-core,
+.trail-frame[data-phase="1"] .trail-router,
+.trail-frame[data-phase="1"] .trail-risk,
+.trail-frame[data-phase="1"] .trail-frame__canvas {
+  opacity: 1;
+}
+
+.trail-brand { transition-delay: 0.05s; }
+.trail-core, .trail-router { transition-delay: 0.1s; }
+.trail-frame__canvas { transition-delay: 0.26s; }
+
+/* ===== Item reveal animation ===== */
+.trail-callout,
+.trail-flag,
+.trail-target {
+  animation: itemReveal 0.35s ease both;
+  animation-play-state: paused;
+  opacity: 0;
+}
+
+.trail-frame[data-phase="0"] .trail-callout,
+.trail-frame[data-phase="0"] .trail-flag,
+.trail-frame[data-phase="0"] .trail-target {
+  animation: none;
+  opacity: 0 !important;
+}
+
+.trail-frame[data-phase="1"] .trail-callout,
+.trail-frame[data-phase="1"] .trail-flag,
+.trail-frame[data-phase="1"] .trail-target {
+  animation-play-state: running;
+}
+
+@keyframes itemReveal {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* ===== Canvas ===== */
+.trail-frame__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 32px;
+  background: transparent;
+  display: block;
+}
+
+/* ===== Flags ===== */
+.trail-frame__flags {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.trail-flag {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 999px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgba(248, 250, 252, 0.95);
+  transform: translateY(-50%);
+  isolation: isolate;
+  background:
+    radial-gradient(circle, color-mix(in srgb, var(--flag-accent-color, #38bdf8) 75%, #020617) 0, rgba(2, 6, 23, 0.9) 60%),
+    var(--flag-accent, rgba(2, 6, 23, 0.85));
+  border: 1px solid var(--flag-accent-color, hsla(0, 0%, 100%, 0.14));
+  box-shadow:
+    0 10px 25px rgba(2, 6, 23, 0.45),
+    0 0 12px color-mix(in srgb, var(--flag-accent-color, rgba(56, 189, 248, 0.9)) 80%, transparent);
+}
+
+.trail-flag::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid color-mix(in srgb, var(--flag-accent-color, #38bdf8) 60%, transparent);
+  border-radius: inherit;
+  opacity: 0.85;
+}
+
+/* Flag delays */
+.trail-flag:nth-child(1) { animation-delay: 0.18s; }
+.trail-flag:nth-child(2) { animation-delay: 0.22s; }
+.trail-flag:nth-child(3) { animation-delay: 0.26s; }
+.trail-flag:nth-child(4) { animation-delay: 0.30s; }
+.trail-flag:nth-child(5) { animation-delay: 0.34s; }
+
+/* ===== Core ===== */
+.trail-core {
+  position: absolute;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trail-core__halo {
+  width: 146px;
+  height: 146px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(110, 91, 187, 0.2), transparent 65%);
+  border: 1px solid rgba(110, 91, 187, 0.35);
+  filter: blur(1px);
+  animation: haloPulse 4s ease-in-out infinite;
+}
+
+.trail-core__logo {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 28% 28%, rgba(110, 91, 187, 0.3), rgba(110, 91, 187, 0)),
+    radial-gradient(circle at 72% 72%, rgba(26, 21, 53, 0.5), transparent 60%),
+    linear-gradient(150deg, #0c1525, #0f1b30 40%, #1a1535 70%, #0c1525);
+  border: 1px solid rgba(110, 91, 187, 0.3);
+  box-shadow: inset 0 0 80px rgba(110, 91, 187, 0.15), 0 0 40px rgba(110, 91, 187, 0.2);
+}
+
+/* ===== Router ===== */
+.trail-router {
+  position: absolute;
+  width: 146px;
+  height: 146px;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+
+.trail-router__halo {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(110, 91, 187, 0.2), transparent 65%);
+  border: 1px solid rgba(110, 91, 187, 0.35);
+  box-shadow: inset 0 0 26px rgba(110, 91, 187, 0.2), 0 12px 30px rgba(5, 10, 25, 0.45);
+  filter: blur(1px);
+  animation: haloPulse 4s ease-in-out infinite;
+}
+
+.trail-router__chip {
+  position: absolute;
+  inset: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 28% 28%, rgba(110, 91, 187, 0.3), rgba(110, 91, 187, 0)),
+    radial-gradient(circle at 72% 72%, rgba(26, 21, 53, 0.5), transparent 60%),
+    linear-gradient(150deg, #0c1525, #0f1b30 40%, #1a1535 70%, #0c1525);
+  border: 1px solid rgba(110, 91, 187, 0.3);
+  box-shadow: inset 0 0 80px rgba(110, 91, 187, 0.15), 0 0 40px rgba(110, 91, 187, 0.2);
+}
+
+/* ===== Chip emblem (sheen effect) ===== */
+.chip-emblem {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+  pointer-events: none;
+  transform: scale(1.01);
+  color: rgba(148, 163, 184, 0.22);
+}
+
+.chip-emblem::after {
+  content: "";
+  position: absolute;
+  inset: -30% -60%;
+  background: linear-gradient(120deg, transparent 45%, hsla(0, 0%, 100%, 0.5) 50%, transparent 55%);
+  opacity: 0.45;
+  transform: translate(-120%) rotate(20deg);
+  animation: chipSheen 5s ease-in-out infinite;
+}
+
+.chip-emblem svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ===== Gateways ===== */
+.trail-frame__targets {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.trail-target {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  transform: translate(-50%, -50%);
+  background: rgba(2, 6, 23, 0.9);
+  border: 1px solid var(--target-border, rgba(34, 197, 94, 0.45));
+  box-shadow: var(--target-shadow, 0 15px 35px rgba(16, 185, 129, 0.25));
+  color: var(--target-color, rgba(236, 253, 245, 0.95));
+  transition: opacity 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trail-target__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  background: var(--target-icon-bg, rgba(34, 197, 94, 0.15));
+  color: var(--target-icon-color, #4ade80);
+}
+
+.trail-target__label {
+  white-space: nowrap;
+  opacity: var(--target-label-opacity, 1);
+  transition: opacity 0.3s ease;
+}
+
+/* Gateway delays */
+.trail-target:nth-child(1) { animation-delay: 0.42s; }
+.trail-target:nth-child(2) { animation-delay: 0.46s; }
+.trail-target:nth-child(3) { animation-delay: 0.50s; }
+.trail-target:nth-child(4) { animation-delay: 0.54s; }
+.trail-target:nth-child(5) { animation-delay: 0.58s; }
+.trail-target:nth-child(6) { animation-delay: 0.62s; }
+.trail-target:nth-child(7) { animation-delay: 0.66s; }
+.trail-target:nth-child(8) { animation-delay: 0.70s; }
+
+/* ===== Pulse variant ===== */
+.trail-target--pulse {
+  animation: itemReveal 0.35s ease both, targetPulse 2.4s ease-in-out 0.8s infinite;
+}
+
+.trail-frame[data-phase="1"] .trail-target--pulse {
+  animation-play-state: running, running;
+}
+
+@keyframes targetPulse {
+  0%, 100% { box-shadow: var(--target-shadow), 0 0 0 0 rgba(34,197,94,0.35); transform: translate(-50%,-50%) scale(1); }
+  50% { box-shadow: var(--target-shadow), 0 0 18px 6px rgba(34,197,94,0.18); transform: translate(-50%,-50%) scale(1.04); }
+}
+
+/* ===== Callouts ===== */
+.trail-callouts {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 6;
+}
+
+.trail-callout {
+  position: absolute;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  min-width: 190px;
+  padding: 0.55rem 0.85rem;
+  border-radius: 18px;
+  backdrop-filter: blur(12px);
+  background: rgba(2, 6, 23, 0.92);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  box-shadow: 0 20px 45px rgba(2, 6, 23, 0.55);
+  transform: translate(-50%, -100%);
+}
+
+.trail-callout--topleft { transform: none; }
+.trail-callout--bottomright { transform: translate(-100%); }
+
+.trail-callout__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  margin-top: 0.2rem;
+  position: relative;
+  flex-shrink: 0;
+  background: var(--callout-accent, #38bdf8);
+  box-shadow: 0 0 12px var(--callout-accent, #38bdf8);
+}
+
+.trail-callout__dot::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border: 1px solid color-mix(in srgb, var(--callout-accent, #38bdf8) 70%, transparent);
+  border-radius: inherit;
+  opacity: 0;
+  animation: calloutPing 2.4s ease-out infinite;
+}
+
+.trail-callout__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.trail-callout__label {
+  color: rgba(248, 250, 252, 0.95);
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.trail-callout__description {
+  color: rgba(226, 232, 240, 0.85);
+  font-size: 0.7rem;
+  margin: 0;
+}
+
+/* Callout delays */
+.trail-callout:nth-child(1) { animation-delay: 0.52s; }
+.trail-callout:nth-child(2) { animation-delay: 0.56s; }
+.trail-callout:nth-child(3) { animation-delay: 0.60s; }
+.trail-callout:nth-child(4) { animation-delay: 0.64s; }
+
+/* ===== Failover ===== */
+.trail-failovers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.trail-failover {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(8, 15, 30, 0.95);
+  border: 1px solid rgba(147, 197, 253, 0.4);
+  box-shadow: 0 10px 20px rgba(103, 232, 249, 0.15);
+  transform: translate(calc(-100% - 8px), -50%);
+  transform-origin: right center;
+  opacity: 0;
+  animation: failoverSlide 0.35s ease forwards;
+}
+
+.trail-failover__text {
+  color: rgba(226, 232, 240, 0.95);
+  font-size: 0.68rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ===== Risk / Fraud Sink ===== */
+.trail-risk {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1rem;
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid hsla(0, 91%, 71%, 0.5);
+  box-shadow: 0 18px 38px rgba(248, 114, 114, 0.2);
+  color: rgba(254, 241, 241, 0.95);
+  font-size: 0.8rem;
+  font-weight: 600;
+  pointer-events: none;
+  transform: translate(-35%, -40%);
+  z-index: 5;
+}
+
+.trail-risk__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 12px;
+  background: rgba(248, 114, 114, 0.2);
+  color: #f87171;
+  font-size: 1rem;
+}
+
+.trail-risk__copy {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.trail-risk__copy small {
+  font-size: 0.68rem;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+/* ===== Brand ===== */
+.trail-brand {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.5rem;
+  z-index: 7;
+}
+
+.trail-brand__mark {
+  width: 80px;
+  height: auto;
+  color: #e2e8f0;
+}
+
+.trail-brand__mark path,
+.trail-brand__mark circle,
+.trail-brand__mark rect {
+  fill: currentColor !important;
+}
+
+/* ===== Keyframes ===== */
+@keyframes haloPulse {
+  0%, 100% { opacity: 0.75; transform: scale(0.98); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes chipSheen {
+  0% { transform: translate(-120%) rotate(20deg); }
+  60% { transform: translate(120%) rotate(20deg); }
+  100% { transform: translate(120%) rotate(20deg); }
+}
+
+@keyframes stageSweep {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes calloutPing {
+  0% { opacity: 0.65; transform: scale(0.6); }
+  60% { opacity: 0; transform: scale(1.35); }
+  100% { opacity: 0; transform: scale(1.5); }
+}
+
+@keyframes failoverSlide {
+  0% { opacity: 0; transform: translate(-20%, -50%) scale(0.97); }
+  100% { opacity: 1; transform: translate(calc(-100% - 8px), -50%) scale(1); }
+}
+
+/* ===== Mobile responsive ===== */
+@media (max-width: 768px) {
+  .trail-frame {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .trail-frame__stage {
+    min-width: 800px;
+    min-height: 340px;
+    aspect-ratio: 800 / 340;
+    border-radius: 20px;
+  }
+
+  .trail-flag {
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
+  }
+
+  .trail-core__halo { width: 110px; height: 110px; }
+  .trail-core__logo { width: 80px; height: 80px; }
+
+  .trail-router { width: 110px; height: 110px; }
+  .trail-router__chip { inset: 14px; }
+
+  .trail-callout {
+    min-width: 150px;
+    padding: 0.4rem 0.65rem;
+    border-radius: 14px;
+  }
+  .trail-callout__label { font-size: 0.72rem; }
+  .trail-callout__description { font-size: 0.62rem; }
+
+  .trail-target { font-size: 0.7rem; padding: 0.35rem 0.65rem; }
+
+  .trail-risk { font-size: 0.72rem; padding: 0.5rem 0.75rem; border-radius: 12px; }
+
+  .trail-brand__mark { width: 56px; }
+}
