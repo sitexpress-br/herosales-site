@@ -19,6 +19,7 @@ import ServicesIdentidadeVisualPage from "./pages/ServicesIdentidadeVisualPage";
 import ServicesIAClinicasPage from "./pages/ServicesIAClinicasPage";
 import OfertaSiteEmailPage from "./pages/OfertaSiteEmailPage";
 import OfertaAgendaLotadaPage from "./pages/OfertaAgendaLotadaPage";
+import EstruturaMarketingClinicasPage from "./pages/EstruturaMarketingClinicasPage";
 import OfertaAgendaPrevisivelPage from "./pages/OfertaAgendaPrevisivelPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsOfUsePage from "./pages/TermsOfUsePage";
@@ -54,6 +55,7 @@ const App = () => (
           <Route path="/servicos/ia-para-clinicas" element={<ServicesIAClinicasPage />} />
           <Route path="/oferta/site-email" element={<OfertaSiteEmailPage />} />
           <Route path="/oferta/agenda-lotada" element={<OfertaAgendaLotadaPage />} />
+          <Route path="/oferta/estrutura-marketing-clinicas" element={<EstruturaMarketingClinicasPage />} />
           <Route path="/oferta/agenda-previsivel" element={<OfertaAgendaPrevisivelPage />} />
           <Route path="/politica-de-privacidade" element={<PrivacyPolicyPage />} />
           <Route path="/termos-de-uso" element={<TermsOfUsePage />} />

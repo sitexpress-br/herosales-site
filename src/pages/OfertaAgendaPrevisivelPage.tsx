@@ -22,7 +22,7 @@ import {
   Siren,
   Users,
 } from "@phosphor-icons/react";
-import logo from "@/assets/logotipo.png";
+const logo = "https://msgsndr-private.storage.googleapis.com/companyPhotos/0599742e-e4db-4132-b44e-f3efdf215411.png";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { PAGE_SEO } from "@/lib/seo-config";
 import { Team } from "@/components/sessoes/Team";
@@ -136,7 +136,9 @@ const OfertaAgendaPrevisivelPage = () => {
       {/* ═══════ HEADER ═══════ */}
       <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-4">
         <div className="w-full max-w-[1400px] flex items-center justify-center sm:justify-between px-6 py-3 rounded-[20px] bg-secondary/80 backdrop-blur-2xl border border-white/15">
-          <img src={logo} alt="Hero Sales" className="h-7 md:h-8" />
+          <div className="bg-[#1a1535] rounded-[0px_0px_12px_12px] px-4 py-2 -mb-5">
+            <img src={logo} alt="Hero Sales" className="w-56 h-auto lg:w-64 lg:h-14 origin-left object-contain drop-shadow-lg" />
+          </div>
           <button
             onClick={openWhatsAppPopup}
             className="hidden sm:flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-[#6e5bbb] hover:bg-[#5d4ca3] text-white font-bold text-sm shadow-gold whitespace-nowrap transition-colors group"
