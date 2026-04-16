@@ -251,7 +251,7 @@ const EstruturaMarketingClinicasPage = () => {
         {/* Dark overlay over marquee */}
         <div className="absolute inset-0 bg-secondary/40" />
 
-        <div className="container mx-auto px-6 relative z-10 max-w-5xl">
+        <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col items-center text-center gap-8">
 
             {/* Badges */}
@@ -276,7 +276,7 @@ const EstruturaMarketingClinicasPage = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.15 }}
-              className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display leading-tight"
+              className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display leading-tight max-w-3xl"
             >
               Tráfego pago com{" "}
               <em className="text-primary italic">estrutura comercial</em>
@@ -299,7 +299,7 @@ const EstruturaMarketingClinicasPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="w-full"
+              className="w-full max-w-5xl mx-auto"
             >
               <TrailFrame />
             </motion.div>
