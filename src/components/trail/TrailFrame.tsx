@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import "./trail.css";
-import TrailBrand from "./TrailBrand";
 import TrailFlags from "./TrailFlags";
 import TrailCore from "./TrailCore";
 import TrailRouterNode from "./TrailRouterNode";
@@ -34,7 +33,6 @@ const TrailFrame = () => {
     <div className="trail-frame" data-phase={phase} ref={ref}>
       <div className="trail-frame__stage">
         <TrailCanvas />
-        <TrailBrand />
         <TrailCore />
         <TrailRouterNode />
         <TrailFlags />

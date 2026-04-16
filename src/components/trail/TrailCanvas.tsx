@@ -19,7 +19,7 @@ function makeCurve(
 }
 
 const W = 6;
-const H = 2.5;
+const H = 1.8;
 const pct = (xPct: number, yPct: number): [number, number] => [
   (xPct / 100) * 2 * W - W,
   -((yPct / 100) * 2 * H - H),

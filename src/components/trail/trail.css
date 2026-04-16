@@ -15,10 +15,10 @@
     radial-gradient(circle at 80% 0, rgba(26, 21, 53, 0.6), transparent 50%),
     #0c1525;
   border-radius: 32px;
-  min-height: 500px;
+  min-height: 300px;
   overflow: hidden;
   position: relative;
-  aspect-ratio: 1216 / 500;
+  aspect-ratio: 20 / 6;
 }
 
 /* Stage sweep pseudo-element */
@@ -515,8 +515,8 @@
 
   .trail-frame__stage {
     min-width: 800px;
-    min-height: 340px;
-    aspect-ratio: 800 / 340;
+    min-height: 240px;
+    aspect-ratio: 800 / 240;
     border-radius: 20px;
   }
 
