@@ -40,7 +40,7 @@ import marquee009 from "@/assets/marquee/009.avif";
 import marquee010 from "@/assets/marquee/010.avif";
 import marquee011 from "@/assets/marquee/011.avif";
 import marquee012 from "@/assets/marquee/012.avif";
-import mockupMédico from "@/assets/mockup-médico-autoridade.avif";
+import TrailFrame from "@/components/trail/TrailFrame";
 
 import { Button } from "@/components/ui/button";
 import { LeadCaptureDialog } from "@/components/LeadCaptureDialog";
@@ -227,7 +227,7 @@ const EstruturaMarketingClinicasPage = () => {
       </header>
 
       {/* ═══════ HERO ═══════ */}
-      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden pt-32 pb-16 md:pt-24 md:pb-0">
+      <section className="relative flex items-center justify-center overflow-hidden pt-32 pb-16">
         {/* Marquee image background - desktop only */}
         <div className="absolute inset-0 hidden lg:flex justify-center items-center overflow-hidden opacity-[0.25]">
           <div className="flex gap-4 rotate-[12deg] scale-125">
@@ -251,55 +251,64 @@ const EstruturaMarketingClinicasPage = () => {
         {/* Dark overlay over marquee */}
         <div className="absolute inset-0 bg-secondary/40" />
 
-        <div className="container mx-auto px-6 relative z-10 max-w-[1400px] grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-          {/* Column 1 — Content */}
-          <div className="text-left">
+        <div className="container mx-auto px-6 relative z-10 max-w-5xl">
+          <div className="flex flex-col items-center text-center gap-8">
+
+            {/* Badges */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="flex flex-wrap items-center gap-2 mb-8"
+              className="flex flex-wrap items-center justify-center gap-2"
             >
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark border border-primary/30">
                 <Users size={16} weight="fill" className="text-primary" />
-                <span className="text-sm font-medium text-primary">
-                  +70 clínicas atendidas
-                </span>
+                <span className="text-sm font-medium text-primary">+70 clínicas atendidas</span>
               </span>
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark border border-primary/30">
                 <Stethoscope size={16} weight="fill" className="text-primary" />
-                <span className="text-sm font-medium text-primary">
-                  Exclusivo para clínicas
-                </span>
+                <span className="text-sm font-medium text-primary">Exclusivo para clínicas</span>
               </span>
             </motion.div>
 
+            {/* Título */}
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.15 }}
-              className="text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-display leading-tight mb-6"
+              className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display leading-tight"
             >
               Tráfego pago com{" "}
               <em className="text-primary italic">estrutura comercial</em>
               {" "}para clínicas
             </motion.h1>
 
+            {/* Texto apoio */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-lg md:text-xl text-white/60 max-w-2xl mb-10"
+              className="text-lg md:text-xl text-white/60 max-w-2xl leading-relaxed"
             >
               Sua agenda não pode depender de indicação. Nem de tráfego que não vira paciente.
               A Hero Sales estrutura a operação comercial completa da sua clínica, da campanha ao atendimento, com cada etapa conectada e funcionando.
             </motion.p>
 
+            {/* Animação */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="w-full"
+            >
+              <TrailFrame />
+            </motion.div>
+
+            {/* CTA */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="mb-10"
             >
               <button onClick={scrollToDiagnostico} className="group">
                 <div className="rotating-border rounded-xl p-[3px]">
@@ -311,11 +320,12 @@ const EstruturaMarketingClinicasPage = () => {
               </button>
             </motion.div>
 
+            {/* Ícones */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7, duration: 0.6 }}
-              className="flex flex-wrap gap-6 text-white/40 text-sm"
+              className="flex flex-wrap justify-center gap-6 text-white/40 text-sm"
             >
               <span className="flex items-center gap-1.5">
                 <ShieldCheck size={16} weight="fill" className="text-primary/60" />
@@ -330,21 +340,8 @@ const EstruturaMarketingClinicasPage = () => {
                 Especialistas em clínicas
               </span>
             </motion.div>
-          </div>
 
-          {/* Column 2 — Mockup */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="w-full self-center relative flex justify-center"
-          >
-            <img
-              src={mockupMédico}
-              alt="Estrutura comercial para clínicas"
-              className="w-full max-w-2xl drop-shadow-2xl rounded-2xl"
-            />
-          </motion.div>
+          </div>
         </div>
       </section>
 
