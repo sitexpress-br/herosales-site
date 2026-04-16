@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./trail.css";
+import { useIsMobile } from "@/hooks/use-mobile";
+import TrailFrameMobile from "./TrailFrameMobile";
 import TrailFlags from "./TrailFlags";
 import TrailCore from "./TrailCore";
 import TrailRouterNode from "./TrailRouterNode";
@@ -11,6 +13,7 @@ import TrailCanvas from "./TrailCanvas";
 const TrailFrame = () => {
   const ref = useRef<HTMLDivElement>(null);
   const [phase, setPhase] = useState<0 | 1>(0);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const el = ref.current;
@@ -18,9 +21,7 @@ const TrailFrame = () => {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setPhase(1);
-        }
+        if (entry.isIntersecting) setPhase(1);
       },
       { threshold: 0.2 }
     );
@@ -31,15 +32,19 @@ const TrailFrame = () => {
 
   return (
     <div className="trail-frame" data-phase={phase} ref={ref}>
-      <div className="trail-frame__stage">
-        <TrailCanvas />
-        <TrailCore />
-        <TrailRouterNode />
-        <TrailFlags />
-        <TrailGateways />
-        <TrailCallouts />
-        <TrailSpecials />
-      </div>
+      {isMobile ? (
+        <TrailFrameMobile phase={phase} />
+      ) : (
+        <div className="trail-frame__stage">
+          <TrailCanvas />
+          <TrailCore />
+          <TrailRouterNode />
+          <TrailFlags />
+          <TrailGateways />
+          <TrailCallouts />
+          <TrailSpecials />
+        </div>
+      )}
     </div>
   );
 };
