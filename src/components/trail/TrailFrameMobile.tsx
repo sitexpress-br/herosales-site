@@ -4,7 +4,7 @@ import { Instagram, Facebook } from "lucide-react";
 import { CheckCircle, Warning, GearSix } from "@phosphor-icons/react";
 import googleIcon from "@/assets/floating/icon-google.svg";
 
-interface Props { phase: 0 | 1 }
+interface Props { phase: 0 | 1; targetLabel?: string }
 
 const CALLOUTS = [
   {
@@ -66,7 +66,7 @@ function Connector({ color, phase }: { color: string; phase: 0 | 1 }) {
   );
 }
 
-export default function TrailFrameMobile({ phase }: Props) {
+export default function TrailFrameMobile({ phase, targetLabel = "Contratos Fechados" }: Props) {
   const [calloutIdx, setCalloutIdx] = useState(0);
   const [showBadge, setShowBadge] = useState(false);
   const badgeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -205,7 +205,7 @@ export default function TrailFrameMobile({ phase }: Props) {
             <CheckCircle weight="fill" size={11} className="text-green-400" />
             <span className="text-[8.5px] font-semibold font-sans whitespace-nowrap"
               style={{ color: "rgba(236,253,245,0.9)" }}>
-              Contratos Fechados
+              {targetLabel}
             </span>
           </div>
         </div>

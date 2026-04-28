@@ -67,7 +67,21 @@ const TransparentHoverImage = ({ src, alt, className }: { src: string; alt: stri
   );
 };
 
-export const Team = () => {
+interface TeamProps {
+  eyebrow?: string;
+  title?: React.ReactNode;
+  subtitle?: string;
+}
+
+export const Team = ({
+  eyebrow = "Nosso Time",
+  title = (
+    <>
+      Conheça quem faz <em className="text-primary italic">acontecer</em>
+    </>
+  ),
+  subtitle = "Uma equipe dedicada a transformar a presença digital de clínicas em autoridade real.",
+}: TeamProps = {}) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [glowX, setGlowX] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
@@ -94,13 +108,13 @@ export const Team = () => {
     <section ref={sectionRef} className="relative bg-background pb-0 overflow-hidden">
       <div className="text-center pt-16 pb-8 md:pb-12 px-4">
         <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">
-          Nosso Time
+          {eyebrow}
         </p>
         <h2 className="text-2xl md:text-4xl lg:text-5xl text-secondary mb-4">
-          Conheça quem faz <em className="text-primary italic">acontecer</em>
+          {title}
         </h2>
         <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base">
-          Uma equipe dedicada a transformar a presença digital de clínicas em autoridade real.
+          {subtitle}
         </p>
       </div>
 

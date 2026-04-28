@@ -24,22 +24,12 @@ import {
   Storefront,
   X,
   Headset,
+  Rocket,
+  Gear,
+  Plugs,
 
 } from "@phosphor-icons/react";
 
-// Marquee images
-import marquee001 from "@/assets/marquee/001.avif";
-import marquee002 from "@/assets/marquee/002.avif";
-import marquee003 from "@/assets/marquee/003.avif";
-import marquee004 from "@/assets/marquee/004.avif";
-import marquee005 from "@/assets/marquee/005.avif";
-import marquee006 from "@/assets/marquee/006.avif";
-import marquee007 from "@/assets/marquee/007.avif";
-import marquee008 from "@/assets/marquee/008.avif";
-import marquee009 from "@/assets/marquee/009.avif";
-import marquee010 from "@/assets/marquee/010.avif";
-import marquee011 from "@/assets/marquee/011.avif";
-import marquee012 from "@/assets/marquee/012.avif";
 import TrailFrame from "@/components/trail/TrailFrame";
 
 import { Button } from "@/components/ui/button";
@@ -47,12 +37,8 @@ import { LeadCaptureDialog } from "@/components/LeadCaptureDialog";
 const logo = "https://msgsndr-private.storage.googleapis.com/companyPhotos/0599742e-e4db-4132-b44e-f3efdf215411.png";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { ClientLogos } from "@/components/sessoes/ClientLogos";
-import { Results } from "@/components/sessoes/Results";
 import { Testimonials } from "@/components/sessoes/Testimonials";
 import { Team } from "@/components/sessoes/Team";
-import { TrailSection } from "@/components/sessoes/TrailSection";
-import { Process } from "@/components/sessoes/Process";
-import PortfolioMarquee from "@/components/sessoes/PortfolioMarquee";
 
 import { PAGE_SEO } from "@/lib/seo-config";
 import {
@@ -64,7 +50,7 @@ import {
 } from "@/lib/animations";
 
 // ─── Section CTA ─────────────────────────────────────────────
-const SectionCTA = ({ label = "Agendar meu diagnóstico", onClick }: { label?: string; onClick: () => void }) => (
+const SectionCTA = ({ label = "Quero um diagnóstico gratuito", onClick }: { label?: string; onClick: () => void }) => (
   <div className="bg-secondary py-8 flex justify-center">
     <motion.button
       onClick={onClick}
@@ -84,14 +70,33 @@ const scenarios = [
   {
     icon: MagnifyingGlass,
     tag: "Cenário A",
-    title: "Você ainda não tem tráfego estruturado.",
-    description: "A agenda depende de indicação, o orgânico é instável e não dá para prever quantos pacientes vão entrar no mês que vem. Crescer assim é questão de sorte, não de estratégia.",
+    title: "Você até tem movimento... mas não tem tráfego estruturado (ainda!).",
+    description: "Não consegue transformar isso em crescimento previsível. E no fim, você sente que está sempre recomeçando do zero.",
   },
   {
     icon: Funnel,
     tag: "Cenário B",
-    title: "Você já investiu em tráfego e não funcionou.",
-    description: "O lead chegou, mas não virou paciente. A agência entregou o clique e sumiu. Sua equipe não deu conta do que veio depois. O investimento não fechou as contas.",
+    title: "Você investe em tráfego... mas os leads não respondem, somem ou não agendam.",
+    description: "E com isso, não dá para prever quantos pacientes vão entrar no mês que vem...",
+  },
+];
+
+// ─── 3 Pilares do Hero Sales ─────────────────────────────────
+const pillars = [
+  {
+    icon: Rocket,
+    title: "Tráfego inteligente",
+    description: "Atrai pacientes qualificados todos os dias.",
+  },
+  {
+    icon: Gear,
+    title: "Organização comercial",
+    description: "Cada lead é atendido com estratégia.",
+  },
+  {
+    icon: Plugs,
+    title: "Automação e tecnologia",
+    description: "Nada se perde. Tudo é acompanhado.",
   },
 ];
 
@@ -136,11 +141,10 @@ const methodSteps = [
 
 // ─── Para quem é ─────────────────────────────────────────────
 const idealProfile = [
-  "Você quer uma fonte de demanda que não depende só de indicação",
-  "Você já investiu em tráfego e não viu o retorno que esperava",
-  "Você sabe que está perdendo leads mas não sabe exatamente onde",
-  "Você quer que sua equipe foque em atender, não em correr atrás de contato",
-  "Você quer saber, no fim do mês, quanto cada real investido retornou",
+  "Clínicas que querem crescer com previsibilidade",
+  "Profissionais que já investem em marketing",
+  "Quem quer parar de depender de indicação",
+  "Quem quer estruturar o comercial de verdade",
 ];
 
 // ─── Comparativo ─────────────────────────────────────────────
@@ -153,12 +157,6 @@ const comparison = [
   { traditional: "Conversão baixa? A culpa é sempre do atendimento", herosales: "Se o lead não vira paciente, encontramos onde e corrigimos" },
 ];
 
-const heroMarqueeImages = {
-  column1: [marquee001, marquee002, marquee003, marquee004],
-  column2: [marquee005, marquee006, marquee007, marquee008],
-  column3: [marquee009, marquee010, marquee011, marquee012],
-};
-
 // ─── Tudo que está incluso ────────────────────────────────────
 const inclusos = [
   {
@@ -169,7 +167,7 @@ const inclusos = [
   {
     component: CRMAnimation,
     title: "CRM centralizado",
-    description: "Todo contato organizado por etapa, origem e responsável. WhatsApp, Instagram, Google e site — tudo em um só lugar.",
+    description: "Todo contato organizado por etapa, origem e responsável. WhatsApp, Instagram, Google e site, tudo em um só lugar.",
   },
   {
     component: AIAttendanceAnimation,
@@ -220,40 +218,21 @@ const EstruturaMarketingClinicasPage = () => {
             onClick={scrollToDiagnostico}
             className="hidden sm:flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-[#6e5bbb] hover:bg-[#5d4ca3] text-white font-bold text-sm shadow-lg whitespace-nowrap transition-colors group"
           >
-            Fazer diagnóstico gratuito
+            Quero um diagnóstico gratuito
             <ArrowRight size={16} weight="bold" className="group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
       </header>
 
-      {/* ═══════ HERO ═══════ */}
-      <section className="relative flex items-center justify-center overflow-hidden pt-32 pb-16">
-        {/* Marquee image background - desktop only */}
-        <div className="absolute inset-0 hidden lg:flex justify-center items-center overflow-hidden opacity-[0.25]">
-          <div className="flex gap-4 rotate-[12deg] scale-125">
-            <div className="flex flex-col gap-4 animate-[marquee-up_25s_linear_infinite]">
-              {[...heroMarqueeImages.column1, ...heroMarqueeImages.column1].map((src, i) => (
-                <img key={`c1-${i}`} src={src} alt="" className="w-[280px] rounded-xl object-cover" loading="lazy" />
-              ))}
-            </div>
-            <div className="flex flex-col gap-4 animate-[marquee-down_30s_linear_infinite]">
-              {[...heroMarqueeImages.column2, ...heroMarqueeImages.column2].map((src, i) => (
-                <img key={`c2-${i}`} src={src} alt="" className="w-[280px] rounded-xl object-cover" loading="lazy" />
-              ))}
-            </div>
-            <div className="flex flex-col gap-4 animate-[marquee-up_28s_linear_infinite]">
-              {[...heroMarqueeImages.column3, ...heroMarqueeImages.column3].map((src, i) => (
-                <img key={`c3-${i}`} src={src} alt="" className="w-[280px] rounded-xl object-cover" loading="lazy" />
-              ))}
-            </div>
-          </div>
-        </div>
-        {/* Dark overlay over marquee */}
-        <div className="absolute inset-0 bg-secondary/40" />
+      {/* ═══════ HERO (DOBRA 1) — estilo Clini+ ═══════ */}
+      <section className="relative flex items-center justify-center overflow-hidden pt-36 md:pt-40 pb-20 md:pb-28">
+        {/* Background gradient sutil */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_30%,hsl(var(--primary)/0.18),transparent)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_80%_80%,hsl(var(--primary)/0.10),transparent)]" />
 
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="flex flex-col items-center text-center gap-8">
+        <div className="container mx-auto px-6 relative z-10 flex flex-col items-center text-center gap-8">
 
+          <div className="flex flex-col items-center text-center gap-8 max-w-4xl mx-auto">
             {/* Badges */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -276,79 +255,89 @@ const EstruturaMarketingClinicasPage = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.15 }}
-              className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display leading-tight max-w-3xl"
+              className="text-3xl md:text-5xl lg:text-6xl font-display leading-tight"
             >
-              Tráfego pago com{" "}
-              <em className="text-primary italic">estrutura comercial</em>
-              {" "}para clínicas
+              Gere pacientes todos os dias com{" "}
+              <em className="text-primary italic">uma estrutura</em>{" "}
+              que une:
             </motion.h1>
+
+            {/* Subtítulo / equação */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+              className="text-base md:text-xl text-primary font-display italic max-w-3xl leading-relaxed"
+            >
+              Tecnologia <span className="text-white/70 not-italic">→</span> Geração de Demanda <span className="text-white/70 not-italic">→</span> Conversão de Alto Impacto
+            </motion.p>
 
             {/* Texto apoio */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.35 }}
               className="text-lg md:text-xl text-white/60 max-w-2xl leading-relaxed"
             >
-              Sua agenda não pode depender de indicação. Nem de tráfego que não vira paciente.
-              A Hero Sales estrutura a operação comercial completa da sua clínica, da campanha ao atendimento, com cada etapa conectada e funcionando.
+              Pare de depender de indicação ou de uma recepção despreparada.
+              Nós estruturamos todo o processo para transformar interesse em faturamento previsível.
             </motion.p>
-
-            {/* Animação */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="w-full"
-            >
-              <TrailFrame />
-            </motion.div>
-
-            {/* CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-            >
-              <button onClick={scrollToDiagnostico} className="group">
-                <div className="rotating-border rounded-xl p-[3px]">
-                  <span className="relative z-10 flex items-center justify-center gap-2 px-8 py-4 sm:px-24 sm:py-5 rounded-lg bg-[#6e5bbb] text-white font-bold text-lg border-2 border-white shadow-lg">
-                    Quero meu diagnóstico gratuito
-                    <ArrowRight size={20} weight="bold" className="group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </div>
-              </button>
-            </motion.div>
-
-            {/* Ícones */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.7, duration: 0.6 }}
-              className="flex flex-wrap justify-center gap-6 text-white/40 text-sm"
-            >
-              <span className="flex items-center gap-1.5">
-                <ShieldCheck size={16} weight="fill" className="text-primary/60" />
-                Diagnóstico sem custo
-              </span>
-              <span className="flex items-center gap-1.5">
-                <Lightning size={16} weight="fill" className="text-primary/60" />
-                Operação ponta a ponta
-              </span>
-              <span className="flex items-center gap-1.5">
-                <Headset size={16} weight="fill" className="text-primary/60" />
-                Especialistas em clínicas
-              </span>
-            </motion.div>
-
           </div>
+
+          {/* TrailFrame — largura total para centralização visual */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="w-full flex justify-center"
+          >
+            <TrailFrame targetLabel="Consultas agendadas" />
+          </motion.div>
+
+          {/* CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.45 }}
+          >
+            <button onClick={scrollToDiagnostico} className="group">
+              <div className="rotating-border rounded-xl p-[3px]">
+                <span className="relative z-10 flex items-center justify-center gap-2 px-8 py-4 sm:px-24 sm:py-5 rounded-lg bg-[#6e5bbb] text-white font-bold text-lg border-2 border-white shadow-lg">
+                  Quero um diagnóstico gratuito
+                  <ArrowRight size={20} weight="bold" className="group-hover:translate-x-1 transition-transform" />
+                </span>
+              </div>
+            </button>
+          </motion.div>
+
+          {/* Ícones */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.65, duration: 0.6 }}
+            className="flex flex-wrap justify-center gap-6 text-white/40 text-sm"
+          >
+            <span className="flex items-center gap-1.5">
+              <ShieldCheck size={16} weight="fill" className="text-primary/60" />
+              Diagnóstico sem custo
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Lightning size={16} weight="fill" className="text-primary/60" />
+              Operação ponta a ponta
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Headset size={16} weight="fill" className="text-primary/60" />
+              Especialistas em clínicas
+            </span>
+          </motion.div>
+
         </div>
       </section>
 
       {/* ═══════ CLIENT LOGOS ═══════ */}
       <ClientLogos />
 
-      {/* ═══════ DOIS CENÁRIOS, UM PROBLEMA ═══════ */}
+      {/* ═══════ DOIS CENÁRIOS (DOBRA 2) ═══════ */}
       <section className="py-20 md:py-28 relative">
         <div className="container mx-auto px-6">
           <motion.div
@@ -359,11 +348,9 @@ const EstruturaMarketingClinicasPage = () => {
             className="text-center mb-16"
           >
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mb-4">
-              Dois cenários, <em className="text-primary italic">um problema</em>
+              Se você tem uma clínica, provavelmente está em{" "}
+              <em className="text-primary italic">um desses cenários:</em>
             </h2>
-            <p className="text-white/50 max-w-xl mx-auto">
-              Não importa onde você está agora. Clínicas que chegam até a Hero Sales geralmente vivem um desses dois momentos.
-            </p>
           </motion.div>
 
           <motion.div
@@ -398,12 +385,12 @@ const EstruturaMarketingClinicasPage = () => {
             variants={fadeInUp}
             className="text-center text-lg md:text-xl text-white/80 max-w-3xl mx-auto font-display italic"
           >
-            "Em ambos os casos, o que falta não é mais lead. É <span className="text-primary not-italic font-bold">estrutura</span> para transformá-lo em paciente."
+            "Nos dois casos, o que falta para o seu negócio não é mais lead. É <span className="text-primary not-italic font-bold">estrutura</span> para transformá-los em pacientes, em clientes que irão colocar dinheiro no seu bolso!"
           </motion.p>
         </div>
       </section>
 
-      {/* ═══════ A VIRADA ═══════ */}
+      {/* ═══════ A VIRADA (DOBRA 3) ═══════ */}
       <section className="py-20 md:py-28 relative overflow-hidden border-y border-white/5">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_50%,hsl(var(--primary)/0.12),transparent)]" />
         <div className="container mx-auto px-6 relative z-10">
@@ -415,27 +402,123 @@ const EstruturaMarketingClinicasPage = () => {
             className="text-center max-w-3xl mx-auto"
           >
             <span className="inline-block text-xs uppercase tracking-[0.2em] text-primary/80 font-bold mb-4">A virada</span>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mb-6">
-              Tráfego todo mundo faz. <em className="text-primary italic">O que vem depois</em> é onde a maioria falha.
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mb-4">
+              O problema <em className="text-primary italic">não é o tráfego!</em>
             </h2>
-            <p className="text-white/60 text-base md:text-lg mb-10 leading-relaxed">
-              Qualquer agência coloca seu anúncio no ar. A Hero Sales cuida do que acontece depois do clique, estruturando o processo comercial completo para que nenhum lead se perca antes de virar paciente.
+            <p className="text-xl md:text-2xl text-white/80 mb-8 font-display italic">
+              O problema é o que acontece depois dele...
             </p>
+            <p className="text-white/60 text-base md:text-lg mb-8 leading-relaxed">
+              A maioria das clínicas até consegue gerar interesse... mas perde dinheiro todos os dias porque não tem:
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10 max-w-3xl mx-auto">
+              {[
+                { icon: Gear, text: "processo comercial estruturado" },
+                { icon: Headset, text: "controle dos atendimentos" },
+                { icon: ChartLineUp, text: "acompanhamento dos leads" },
+              ].map((item) => (
+                <div
+                  key={item.text}
+                  className="glass-dark rounded-xl p-5 border border-red-500/20 flex flex-col items-center gap-3"
+                >
+                  <div className="w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center">
+                    <item.icon size={24} weight="duotone" className="text-red-400" />
+                  </div>
+                  <p className="text-white/80 text-sm font-medium">{item.text}</p>
+                </div>
+              ))}
+            </div>
+
+            <p className="text-lg md:text-xl text-white font-display italic mb-10">
+              Sem isso, o marketing vira <span className="text-red-400 not-italic font-bold">custo</span>, não <span className="text-primary not-italic font-bold">investimento!</span>
+            </p>
+
             <button
               onClick={scrollToDiagnostico}
               className="group inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl bg-[#6e5bbb] hover:bg-[#5d4ca3] text-white font-bold text-lg shadow-lg transition-colors"
             >
-              Agendar meu diagnóstico
+              Quero um diagnóstico gratuito
               <ArrowRight size={20} weight="bold" className="group-hover:translate-x-1 transition-transform" />
             </button>
           </motion.div>
         </div>
       </section>
 
-      {/* ═══════ NÚMEROS QUE FALAM POR NÓS (Results) ═══════ */}
-      <Results />
+      {/* ═══════ É POR ISSO QUE CRIAMOS O HERO SALES (DOBRA 4) ═══════ */}
+      <section className="py-20 md:py-28 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,hsl(var(--primary)/0.10),transparent)]" />
+        <div className="container mx-auto px-6 relative z-10">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={defaultViewport}
+            variants={fadeInUp}
+            className="text-center mb-14"
+          >
+            <span className="inline-block text-xs uppercase tracking-[0.2em] text-primary/80 font-bold mb-4">
+              A solução
+            </span>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mb-5">
+              É por isso que criamos o{" "}
+              <em className="text-primary italic">Hero Sales</em>
+            </h2>
+            <p className="text-white/65 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
+              Um sistema completo para transformar sua clínica em uma máquina de aquisição e conversão.
+            </p>
+          </motion.div>
 
-      {/* ═══════ MÉTODO HERO SALES ═══════ */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={defaultViewport}
+            variants={staggerContainer}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12"
+          >
+            {pillars.map((p) => (
+              <motion.div
+                key={p.title}
+                variants={staggerItem}
+                className="glass-dark rounded-2xl p-7 border border-primary/20 hover:border-primary/50 transition-all duration-300 text-center"
+              >
+                <div className="w-14 h-14 mx-auto mb-5 rounded-xl bg-primary/15 flex items-center justify-center">
+                  <p.icon size={28} weight="duotone" className="text-primary" />
+                </div>
+                <h3 className="font-sans text-xl font-bold mb-2 text-white">{p.title}</h3>
+                <p className="text-white/60 text-sm md:text-base leading-relaxed">{p.description}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.p
+            initial="hidden"
+            whileInView="visible"
+            viewport={defaultViewport}
+            variants={fadeInUp}
+            className="text-center text-lg md:text-xl text-white/85 max-w-2xl mx-auto font-display italic mb-10"
+          >
+            Não é só marketing. É uma estrutura que gera <span className="text-primary not-italic font-bold">previsibilidade.</span>
+          </motion.p>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={defaultViewport}
+            variants={fadeInUp}
+            className="flex justify-center"
+          >
+            <button
+              onClick={scrollToDiagnostico}
+              className="group inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl bg-[#6e5bbb] hover:bg-[#5d4ca3] text-white font-bold text-lg shadow-lg transition-colors"
+            >
+              Quero um diagnóstico gratuito
+              <ArrowRight size={20} weight="bold" className="group-hover:translate-x-1 transition-transform" />
+            </button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════ MÉTODO HERO SALES — UM PROCESSO CLARO (DOBRA 10) ═══════ */}
       <section className="py-20 md:py-28 relative">
         <div className="container mx-auto px-6">
           <motion.div
@@ -445,11 +528,15 @@ const EstruturaMarketingClinicasPage = () => {
             variants={fadeInUp}
             className="text-center mb-16"
           >
+            <span className="inline-block text-xs uppercase tracking-[0.2em] text-primary/80 font-bold mb-4">
+              Método Hero Sales
+            </span>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mb-4">
-              Método <em className="text-primary italic">Hero Sales</em>
+              Um processo claro, do{" "}
+              <em className="text-primary italic">diagnóstico à escala</em>
             </h2>
             <p className="text-white/70 max-w-2xl mx-auto text-lg mb-3">
-              Da campanha ao paciente atendido. Cada etapa conectada à próxima.
+              Você sabe exatamente o que está sendo feito, e por quê.
             </p>
             <p className="text-white/50 max-w-2xl mx-auto">
               Enquanto agências param no clique, o Método Hero Sales opera o processo inteiro. Nenhuma etapa fica solta.
@@ -508,7 +595,7 @@ const EstruturaMarketingClinicasPage = () => {
               Tudo que está <em className="text-primary italic">incluso</em>
             </h2>
             <p className="text-white/50 max-w-xl mx-auto">
-              A operação comercial completa da sua clínica em uma única estrutura — da campanha ao paciente atendido.
+              A operação comercial completa da sua clínica em uma única estrutura, da campanha ao paciente atendido.
             </p>
           </motion.div>
 
@@ -540,11 +627,53 @@ const EstruturaMarketingClinicasPage = () => {
         </div>
       </section>
 
-      {/* ═══════ SUA ESTRATÉGIA DIGITAL EM AÇÃO (TrailSection) ═══════ */}
-      <TrailSection />
-      <SectionCTA onClick={scrollToDiagnostico} />
+      {/* ═══════ POR QUE A HERO SALES É DIFERENTE (DOBRA 8) ═══════ */}
+      <section className="relative w-full overflow-hidden bg-secondary py-20 md:py-28">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_50%,hsl(var(--primary)/0.10),transparent)]" />
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={defaultViewport}
+            variants={fadeInUp}
+            className="mx-auto max-w-3xl text-center mb-12"
+          >
+            <span className="inline-block rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary mb-6">
+              O diferencial
+            </span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display text-secondary-foreground mb-5 font-medium">
+              Por que a <em className="text-primary italic">Hero Sales</em> é diferente
+            </h2>
+            <p className="text-white/70 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+              A maioria das agências entrega tráfego. Algumas ajudam no marketing, mas quase nenhuma resolve o principal problema:
+            </p>
+          </motion.div>
 
-      {/* ═══════ POR QUE A HERO SALES (Comparativo) ═══════ */}
+          <TrailFrame targetLabel="Consultas agendadas" />
+          <p className="text-muted-foreground text-sm mt-4 md:hidden text-center">
+            ← Deslize para explorar →
+          </p>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={defaultViewport}
+            variants={fadeInUp}
+            className="max-w-3xl mx-auto mt-12 text-center"
+          >
+            <p className="text-xl md:text-2xl text-white font-display italic mb-4">
+              Transformar lead em <span className="text-primary not-italic font-bold">paciente!</span>
+            </p>
+            <p className="text-white/65 text-base md:text-lg leading-relaxed">
+              Nós conectamos tudo isso. E é isso que gera crescimento de verdade.
+              Veja como captamos visitantes de múltiplos canais, processamos com inteligência e convertemos em pacientes reais para sua clínica.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+      <SectionCTA onClick={scrollToDiagnostico} label="Quero um diagnóstico gratuito" />
+
+      {/* ═══════ O QUE MUDA (DOBRA 6 — Comparativo) ═══════ */}
       <section className="py-20 md:py-28 relative">
         <div className="container mx-auto px-6">
           <motion.div
@@ -554,13 +683,11 @@ const EstruturaMarketingClinicasPage = () => {
             variants={fadeInUp}
             className="text-center mb-16"
           >
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mb-4">
-              Por que a <em className="text-primary italic">Hero Sales</em>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mb-5 max-w-4xl mx-auto">
+              O que muda quando você para de contratar só tráfego e contrata{" "}
+              <em className="text-primary italic">Tecnologia, Geração de Demanda e Conversão de Alto Impacto</em>
             </h2>
-            <p className="text-white/70 max-w-2xl mx-auto text-lg mb-3">
-              O que muda quando você para de contratar só tráfego.
-            </p>
-            <p className="text-white/50 max-w-xl mx-auto">
+            <p className="text-white/55 max-w-2xl mx-auto text-base md:text-lg italic">
               A diferença não está no anúncio. Está no que existe depois dele.
             </p>
           </motion.div>
@@ -593,7 +720,7 @@ const EstruturaMarketingClinicasPage = () => {
         </div>
       </section>
 
-      {/* ═══════ PARA QUEM É ═══════ */}
+      {/* ═══════ PARA QUEM É (DOBRA 5) ═══════ */}
       <section className="py-20 md:py-28 relative">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,hsl(var(--primary)/0.06),transparent)]" />
         <div className="container mx-auto px-6 relative z-10">
@@ -602,16 +729,17 @@ const EstruturaMarketingClinicasPage = () => {
             whileInView="visible"
             viewport={defaultViewport}
             variants={fadeInUp}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mb-4">
-              Para <em className="text-primary italic">quem é</em>
+              Trabalhamos com quem{" "}
+              <em className="text-primary italic">leva isso a sério</em>
             </h2>
-            <p className="text-white/70 max-w-2xl mx-auto text-lg mb-3">
-              Para clínicas que querem crescer com previsibilidade, não com sorte.
+            <p className="text-primary text-base md:text-lg max-w-3xl mx-auto font-display italic mb-4">
+              Tecnologia <span className="text-white/70 not-italic">→</span> Geração de Demanda <span className="text-white/70 not-italic">→</span> Conversão de Alto Impacto
             </p>
-            <p className="text-white/50 max-w-xl mx-auto">
-              Trabalhamos com quem leva o comercial a sério.
+            <p className="text-white/65 max-w-2xl mx-auto text-base md:text-lg">
+              Por isso acreditamos que faça sentido para quem:
             </p>
           </motion.div>
 
@@ -643,28 +771,27 @@ const EstruturaMarketingClinicasPage = () => {
             variants={fadeInUp}
             className="max-w-3xl mx-auto p-6 rounded-xl border border-red-500/20 bg-red-950/20"
           >
-            <div className="flex items-start gap-3">
+            <div className="flex items-start gap-3 mb-4">
               <X size={22} weight="bold" className="text-red-400 flex-shrink-0 mt-0.5" />
-              <p className="text-white/70 text-sm md:text-base">
-                A Hero Sales <span className="font-bold text-white">não é para todo mundo</span>. Se você quer apenas uma agência para
-                rodar anúncio e entregar lead, a Hero Sales não é para você. Nosso modelo exige comprometimento com o processo e entrega resultado proporcional a isso.
+              <p className="text-white text-base md:text-lg font-bold">
+                Não é pra quem quer resultado sem processo
               </p>
             </div>
+            <p className="text-white/85 text-sm md:text-base leading-relaxed mb-3">
+              O Hero Sales é para todo mundo, porém, <span className="font-bold text-white">não a todo momento!</span>
+            </p>
+            <p className="text-white/65 text-sm md:text-base leading-relaxed">
+              Se você quer apenas uma agência para rodar anúncio e entregar lead, então é melhor sair dessa página agora mesmo.
+              Nosso modelo de trabalho exige comprometimento com o processo e entrega resultado proporcional a isso!
+            </p>
           </motion.div>
         </div>
       </section>
-      <SectionCTA onClick={scrollToDiagnostico} />
-
-      {/* ═══════ MAPA DE IMPLEMENTAÇÃO (Process) ═══════ */}
-      <Process />
-      <SectionCTA onClick={scrollToDiagnostico} />
-
-      {/* ═══════ SITES QUE JÁ CRIAMOS PARA CLÍNICAS (PortfolioMarquee) ═══════ */}
-      <PortfolioMarquee />
+      <SectionCTA onClick={scrollToDiagnostico} label="Quero um diagnóstico gratuito" />
 
       {/* ═══════ O QUE NOSSOS CLIENTES DIZEM (Testimonials) ═══════ */}
       <Testimonials />
-      <SectionCTA onClick={scrollToDiagnostico} />
+      <SectionCTA onClick={scrollToDiagnostico} label="Quero um diagnóstico gratuito" />
 
       {/* ═══════ QUEM ESTÁ POR TRÁS DO MÉTODO ═══════ */}
       <section className="py-20 md:py-28 relative">
@@ -677,8 +804,11 @@ const EstruturaMarketingClinicasPage = () => {
             variants={fadeInUp}
             className="text-center mb-12"
           >
+            <span className="inline-block text-xs uppercase tracking-[0.2em] text-primary/80 font-bold mb-4">
+              Liderança
+            </span>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mb-4">
-              Quem está por trás do <em className="text-primary italic">método</em>
+              A visão que move a <em className="text-primary italic">Hero Sales</em>
             </h2>
             <p className="text-white/50 max-w-2xl mx-auto">
               Especialistas em fazer o tráfego da sua clínica virar faturamento de verdade.
@@ -728,8 +858,16 @@ const EstruturaMarketingClinicasPage = () => {
         </div>
       </section>
 
-      {/* ═══════ CONHEÇA QUEM FAZ ACONTECER (Team) ═══════ */}
-      <Team />
+      {/* ═══════ QUEM ESTÁ POR TRÁS DA ESTRATÉGIA (DOBRA 11) ═══════ */}
+      <Team
+        eyebrow="Nosso Time"
+        title={
+          <>
+            Quem está por trás da <em className="text-primary italic">estratégia</em>
+          </>
+        }
+        subtitle="Um time que entende de tráfego, vendas e tecnologia e principalmente, de resultado."
+      />
 
       {/* ═══════ DIAGNÓSTICO / CTA FINAL ═══════ */}
       <section id="diagnostico" className="relative py-20 md:py-28 overflow-hidden">

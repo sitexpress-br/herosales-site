@@ -9,7 +9,11 @@ const greenStyle = {
   "--target-label-opacity": "1",
 } as React.CSSProperties;
 
-const TrailGateways = () => (
+interface TrailGatewaysProps {
+  targetLabel?: string;
+}
+
+const TrailGateways = ({ targetLabel = "Contratos Fechados" }: TrailGatewaysProps) => (
   <div className="trail-frame__targets" aria-hidden="true">
     <div
       className="trail-target trail-target--pulse"
@@ -18,7 +22,7 @@ const TrailGateways = () => (
       <span className="trail-target__icon">
         <Briefcase size={14} />
       </span>
-      <span className="trail-target__label">Contratos Fechados</span>
+      <span className="trail-target__label">{targetLabel}</span>
     </div>
   </div>
 );

@@ -10,7 +10,11 @@ import TrailCallouts from "./TrailCallouts";
 import TrailSpecials from "./TrailSpecials";
 import TrailCanvas from "./TrailCanvas";
 
-const TrailFrame = () => {
+interface TrailFrameProps {
+  targetLabel?: string;
+}
+
+const TrailFrame = ({ targetLabel }: TrailFrameProps = {}) => {
   const ref = useRef<HTMLDivElement>(null);
   const [phase, setPhase] = useState<0 | 1>(0);
   const isMobile = useIsMobile();
@@ -33,14 +37,14 @@ const TrailFrame = () => {
   return (
     <div className="trail-frame" data-phase={phase} ref={ref}>
       {isMobile ? (
-        <TrailFrameMobile phase={phase} />
+        <TrailFrameMobile phase={phase} targetLabel={targetLabel} />
       ) : (
         <div className="trail-frame__stage">
           <TrailCanvas />
           <TrailCore />
           <TrailRouterNode />
           <TrailFlags />
-          <TrailGateways />
+          <TrailGateways targetLabel={targetLabel} />
           <TrailCallouts />
           <TrailSpecials />
         </div>
