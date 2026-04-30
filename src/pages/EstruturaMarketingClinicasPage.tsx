@@ -283,16 +283,6 @@ const EstruturaMarketingClinicasPage = () => {
             </motion.p>
           </div>
 
-          {/* TrailFrame — largura total para centralização visual */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="w-full flex justify-center"
-          >
-            <TrailFrame targetLabel="Consultas agendadas" />
-          </motion.div>
-
           {/* CTA */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}

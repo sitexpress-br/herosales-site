@@ -14,8 +14,6 @@ const footerLinks = {
     { label: "Blog + SEO", href: "/servicos/blog-seo-medico" },
   ],
   empresa: [
-    { label: "Projetos", href: "/projetos" },
-    { label: "Blog", href: "/blog" },
     { label: "Contato", href: "/contato" },
   ],
 };

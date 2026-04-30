@@ -1,12 +1,12 @@
 import { Header } from "@/components/sessoes/Header";
 import { Hero } from "@/components/sessoes/Hero";
-import { Projects } from "@/components/sessoes/Projects";
+// import { Projects } from "@/components/sessoes/Projects"; // Hidden temporarily
 import { Testimonials } from "@/components/sessoes/Testimonials";
 import { Team } from "@/components/sessoes/Team";
 import { Process } from "@/components/sessoes/Process";
 import { Services } from "@/components/sessoes/Services";
 import { Results } from "@/components/sessoes/Results";
-import { Blog } from "@/components/sessoes/Blog";
+// import { Blog } from "@/components/sessoes/Blog"; // Hidden temporarily
 import { Footer } from "@/components/sessoes/Footer";
 
 import { SEOHead, OrganizationSchema, WebSiteSchema, LocalBusinessSchema } from "@/components/seo";
@@ -27,13 +27,13 @@ const Index = () => {
       <Header />
       <Hero />
       <Services />
-      <Projects />
+      {/* <Projects /> Hidden temporarily */}
       <Results />
       <Process />
       <Testimonials />
       <Team />
-      
-      <Blog />
+
+      {/* <Blog /> Hidden temporarily */}
       <Footer />
     </div>
   );

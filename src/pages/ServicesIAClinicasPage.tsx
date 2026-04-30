@@ -267,7 +267,7 @@ const ServicesIAClinicasPage = () => {
       </section>
 
       {/* Projetos */}
-      <section className="bg-secondary py-10 md:py-[90px]">
+      <section hidden className="bg-secondary py-10 md:py-[90px]">
         <div className="container mx-auto px-6">
           <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={defaultViewport}>
             <motion.div variants={fadeInUp} className="text-center mb-16">

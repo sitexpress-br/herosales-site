@@ -5,21 +5,13 @@ import { List, X, CaretDown, CaretRight, WhatsappLogo } from "@phosphor-icons/re
 import { useIsMobile } from "@/hooks/use-mobile";
 import { openWhatsAppPopup } from "@/hooks/useWhatsAppPopup";
 const logo = "https://msgsndr-private.storage.googleapis.com/companyPhotos/0599742e-e4db-4132-b44e-f3efdf215411.png";
-import { MegaMenuServices, MegaMenuBlog } from "@/components/megamenu";
+import { MegaMenuServices } from "@/components/megamenu";
 type MenuItemRefs = {
   [key: string]: HTMLButtonElement | null;
 };
 const menuItems = [{
   label: "Serviços",
   href: "/servicos/sites-de-autoridade",
-  hasMegaMenu: true
-}, {
-  label: "Projetos",
-  href: "/projetos",
-  hasMegaMenu: false
-}, {
-  label: "Blog",
-  href: "/blog",
   hasMegaMenu: true
 }, {
   label: "Contato",
@@ -152,8 +144,6 @@ export const Header = () => {
     switch (activeMenu) {
       case "Serviços":
         return <MegaMenuServices onItemClick={handleNavigation} onClose={() => setActiveMenu(null)} />;
-      case "Blog":
-        return <MegaMenuBlog onItemClick={handleNavigation} />;
       default:
         return null;
     }
