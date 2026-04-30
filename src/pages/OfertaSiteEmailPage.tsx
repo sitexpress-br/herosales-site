@@ -48,7 +48,6 @@ import { Link } from "react-router-dom";
 import { WhatsappLogo } from "@phosphor-icons/react";
 const logo = "https://msgsndr-private.storage.googleapis.com/companyPhotos/0599742e-e4db-4132-b44e-f3efdf215411.png";
 import { SEOHead } from "@/components/seo/SEOHead";
-import { ClientLogos } from "@/components/sessoes/ClientLogos";
 import { Results } from "@/components/sessoes/Results";
 import { Testimonials } from "@/components/sessoes/Testimonials";
 
@@ -361,9 +360,6 @@ const OfertaSiteEmailPage = () => {
           <LeadCaptureDialog open={formOpen} onOpenChange={setFormOpen} />
         </div>
       </section>
-
-      {/* ═══════ CLIENT LOGOS ═══════ */}
-      <ClientLogos />
 
       {/* ═══════ COMO FUNCIONA ═══════ */}
       <motion.section

@@ -59,7 +59,6 @@ import {
 import { LeadCaptureDialog } from "@/components/LeadCaptureDialog";
 const logo = "https://msgsndr-private.storage.googleapis.com/companyPhotos/0599742e-e4db-4132-b44e-f3efdf215411.png";
 import { SEOHead } from "@/components/seo/SEOHead";
-import { ClientLogos } from "@/components/sessoes/ClientLogos";
 import { Results } from "@/components/sessoes/Results";
 import { Testimonials } from "@/components/sessoes/Testimonials";
 import { Team } from "@/components/sessoes/Team";
@@ -480,9 +479,6 @@ const OfertaAgendaLotadaPage = () => {
           </div>
         </div>
       </section>
-
-      {/* ═══════ CLIENT LOGOS ═══════ */}
-      <ClientLogos />
 
       {/* ═══════ FINANCIAL IMPACT ═══════ */}
       <section className="py-16 md:py-20 bg-red-950/20 border-y border-red-500/10">

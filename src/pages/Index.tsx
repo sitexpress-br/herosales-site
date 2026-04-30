@@ -1,6 +1,5 @@
 import { Header } from "@/components/sessoes/Header";
 import { Hero } from "@/components/sessoes/Hero";
-import { ClientLogos } from "@/components/sessoes/ClientLogos";
 import { Projects } from "@/components/sessoes/Projects";
 import { Testimonials } from "@/components/sessoes/Testimonials";
 import { Team } from "@/components/sessoes/Team";
@@ -27,7 +26,6 @@ const Index = () => {
       <LocalBusinessSchema />
       <Header />
       <Hero />
-      <ClientLogos />
       <Services />
       <Projects />
       <Results />
