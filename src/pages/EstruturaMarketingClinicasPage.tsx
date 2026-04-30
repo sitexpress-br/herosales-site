@@ -324,7 +324,7 @@ const EstruturaMarketingClinicasPage = () => {
       </section>
 
       {/* ═══════ DOIS CENÁRIOS (DOBRA 2) ═══════ */}
-      <section className="py-20 md:py-28 relative">
+      <section className="py-20 md:py-28 relative bg-background">
         <div className="container mx-auto px-6">
           <motion.div
             initial="hidden"
@@ -333,7 +333,7 @@ const EstruturaMarketingClinicasPage = () => {
             variants={fadeInUp}
             className="text-center mb-16"
           >
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mb-4">
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mb-4 text-secondary">
               Se você tem uma clínica, provavelmente está em{" "}
               <em className="text-primary italic">um desses cenários:</em>
             </h2>
@@ -350,7 +350,7 @@ const EstruturaMarketingClinicasPage = () => {
               <motion.div
                 key={s.tag}
                 variants={staggerItem}
-                className="glass-dark rounded-xl p-8 border border-primary/15 hover:border-primary/40 transition-all duration-300"
+                className="bg-white rounded-xl p-8 border border-primary/15 hover:border-primary/40 shadow-sm hover:shadow-md transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-5">
                   <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -358,8 +358,8 @@ const EstruturaMarketingClinicasPage = () => {
                   </div>
                   <span className="text-xs uppercase tracking-wider font-bold text-primary/80">{s.tag}</span>
                 </div>
-                <h3 className="font-sans text-xl font-bold mb-3 text-white">{s.title}</h3>
-                <p className="text-white/55 text-sm leading-relaxed">{s.description}</p>
+                <h3 className="font-sans text-xl font-bold mb-3 text-secondary">{s.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{s.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -369,7 +369,7 @@ const EstruturaMarketingClinicasPage = () => {
             whileInView="visible"
             viewport={defaultViewport}
             variants={fadeInUp}
-            className="text-center text-lg md:text-xl text-white/80 max-w-3xl mx-auto font-display italic"
+            className="text-center text-lg md:text-xl text-secondary/80 max-w-3xl mx-auto font-display italic"
           >
             "Nos dois casos, o que falta para o seu negócio não é mais lead. É <span className="text-primary not-italic font-bold">estrutura</span> para transformá-los em pacientes, em clientes que irão colocar dinheiro no seu bolso!"
           </motion.p>
@@ -567,8 +567,8 @@ const EstruturaMarketingClinicasPage = () => {
       <SectionCTA onClick={scrollToDiagnostico} />
 
       {/* ═══════ TUDO QUE ESTÁ INCLUSO ═══════ */}
-      <section className="py-20 md:py-28 relative">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_100%,hsl(219_42%_18%/0.8),transparent)]" />
+      <section className="py-20 md:py-28 relative bg-background">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_100%,hsl(var(--primary)/0.06),transparent)]" />
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial="hidden"
@@ -577,10 +577,10 @@ const EstruturaMarketingClinicasPage = () => {
             variants={fadeInUp}
             className="text-center mb-16"
           >
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mb-4">
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mb-4 text-secondary">
               Tudo que está <em className="text-primary italic">incluso</em>
             </h2>
-            <p className="text-white/50 max-w-xl mx-auto">
+            <p className="text-muted-foreground max-w-xl mx-auto">
               A operação comercial completa da sua clínica em uma única estrutura, da campanha ao paciente atendido.
             </p>
           </motion.div>
@@ -596,14 +596,14 @@ const EstruturaMarketingClinicasPage = () => {
               <motion.div
                 key={f.title}
                 variants={staggerItem}
-                className="group glass-dark rounded-xl overflow-hidden border border-white/10 hover:border-primary/30 transition-all duration-300 hover:-translate-y-1"
+                className="group bg-white rounded-xl overflow-hidden border border-border hover:border-primary/30 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
               >
                 <f.component />
                 <div className="p-5">
-                  <h3 className="font-sans text-lg font-semibold mb-2 text-white">
+                  <h3 className="font-sans text-lg font-semibold mb-2 text-secondary">
                     {f.title}
                   </h3>
-                  <p className="text-white/55 text-sm leading-relaxed">
+                  <p className="text-muted-foreground text-sm leading-relaxed">
                     {f.description}
                   </p>
                 </div>
@@ -707,7 +707,7 @@ const EstruturaMarketingClinicasPage = () => {
       </section>
 
       {/* ═══════ PARA QUEM É (DOBRA 5) ═══════ */}
-      <section className="py-20 md:py-28 relative">
+      <section className="py-20 md:py-28 relative bg-background">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,hsl(var(--primary)/0.06),transparent)]" />
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
@@ -717,14 +717,14 @@ const EstruturaMarketingClinicasPage = () => {
             variants={fadeInUp}
             className="text-center mb-12"
           >
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mb-4">
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mb-4 text-secondary">
               Trabalhamos com quem{" "}
               <em className="text-primary italic">leva isso a sério</em>
             </h2>
             <p className="text-primary text-base md:text-lg max-w-3xl mx-auto font-display italic mb-4">
-              Tecnologia <span className="text-white/70 not-italic">→</span> Geração de Demanda <span className="text-white/70 not-italic">→</span> Conversão de Alto Impacto
+              Tecnologia <span className="text-secondary/60 not-italic">→</span> Geração de Demanda <span className="text-secondary/60 not-italic">→</span> Conversão de Alto Impacto
             </p>
-            <p className="text-white/65 max-w-2xl mx-auto text-base md:text-lg">
+            <p className="text-secondary/70 max-w-2xl mx-auto text-base md:text-lg">
               Por isso acreditamos que faça sentido para quem:
             </p>
           </motion.div>
@@ -740,12 +740,12 @@ const EstruturaMarketingClinicasPage = () => {
               <motion.div
                 key={item}
                 variants={staggerItem}
-                className="flex items-start gap-4 p-4 rounded-xl glass-dark border border-white/5 hover:border-primary/30 transition-colors"
+                className="flex items-start gap-4 p-4 rounded-xl bg-white border border-border hover:border-primary/30 shadow-sm transition-colors"
               >
                 <div className="flex-shrink-0 w-7 h-7 rounded-md bg-primary/15 flex items-center justify-center mt-0.5">
                   <Check size={16} weight="bold" className="text-primary" />
                 </div>
-                <p className="text-white/80 text-base md:text-lg">{item}</p>
+                <p className="text-secondary/80 text-base md:text-lg">{item}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -755,18 +755,18 @@ const EstruturaMarketingClinicasPage = () => {
             whileInView="visible"
             viewport={defaultViewport}
             variants={fadeInUp}
-            className="max-w-3xl mx-auto p-6 rounded-xl border border-red-500/20 bg-red-950/20"
+            className="max-w-3xl mx-auto p-6 rounded-xl border border-red-500/30 bg-red-50"
           >
             <div className="flex items-start gap-3 mb-4">
-              <X size={22} weight="bold" className="text-red-400 flex-shrink-0 mt-0.5" />
-              <p className="text-white text-base md:text-lg font-bold">
+              <X size={22} weight="bold" className="text-red-500 flex-shrink-0 mt-0.5" />
+              <p className="text-secondary text-base md:text-lg font-bold">
                 Não é pra quem quer resultado sem processo
               </p>
             </div>
-            <p className="text-white/85 text-sm md:text-base leading-relaxed mb-3">
-              O Hero Sales é para todo mundo, porém, <span className="font-bold text-white">não a todo momento!</span>
+            <p className="text-secondary/85 text-sm md:text-base leading-relaxed mb-3">
+              O Hero Sales é para todo mundo, porém, <span className="font-bold text-secondary">não a todo momento!</span>
             </p>
-            <p className="text-white/65 text-sm md:text-base leading-relaxed">
+            <p className="text-secondary/70 text-sm md:text-base leading-relaxed">
               Se você quer apenas uma agência para rodar anúncio e entregar lead, então é melhor sair dessa página agora mesmo.
               Nosso modelo de trabalho exige comprometimento com o processo e entrega resultado proporcional a isso!
             </p>

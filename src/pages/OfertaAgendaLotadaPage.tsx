@@ -521,7 +521,7 @@ const OfertaAgendaLotadaPage = () => {
       </section>
 
       {/* ═══════ PAIN POINTS ═══════ */}
-      <section className="py-20 md:py-28 relative">
+      <section className="py-20 md:py-28 relative bg-background">
         <div className="container mx-auto px-6">
           <motion.div
             initial="hidden"
@@ -530,10 +530,10 @@ const OfertaAgendaLotadaPage = () => {
             variants={fadeInUp}
             className="text-center mb-16"
           >
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mb-4">
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mb-4 text-secondary">
               Isso está <em className="text-primary italic">acontecendo</em> na sua clínica?
             </h2>
-            <p className="text-white/50 max-w-xl mx-auto">
+            <p className="text-muted-foreground max-w-xl mx-auto">
               Se você se identificou com algum desses problemas, sua clínica está perdendo dinheiro todos os dias.
             </p>
           </motion.div>
@@ -549,13 +549,13 @@ const OfertaAgendaLotadaPage = () => {
               <motion.div
                 key={point.title}
                 variants={staggerItem}
-                className="group glass-dark rounded-xl p-6 border border-red-500/20 hover:border-red-500/40 transition-all duration-300"
+                className="group bg-white rounded-xl p-6 border border-red-500/30 hover:border-red-500/50 shadow-sm hover:shadow-md transition-all duration-300"
               >
-                <div className="w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center mb-4">
-                  <point.icon size={24} weight="duotone" className="text-red-400" />
+                <div className="w-12 h-12 rounded-lg bg-red-50 flex items-center justify-center mb-4">
+                  <point.icon size={24} weight="duotone" className="text-red-500" />
                 </div>
-                <h3 className="font-sans text-lg font-semibold mb-2 text-white">{point.title}</h3>
-                <p className="text-white/50 text-sm leading-relaxed">{point.description}</p>
+                <h3 className="font-sans text-lg font-semibold mb-2 text-secondary">{point.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{point.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -808,8 +808,8 @@ const OfertaAgendaLotadaPage = () => {
       <SectionCTA />
 
       {/* ═══════ FEATURES (expanded) ═══════ */}
-      <section className="py-20 md:py-28 relative">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_100%,hsl(219_42%_18%/0.8),transparent)]" />
+      <section className="py-20 md:py-28 relative bg-background">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_100%,hsl(var(--primary)/0.06),transparent)]" />
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial="hidden"
@@ -818,10 +818,10 @@ const OfertaAgendaLotadaPage = () => {
             variants={fadeInUp}
             className="text-center mb-16"
           >
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mb-4">
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mb-4 text-secondary">
               O que está <em className="text-primary italic">incluso</em>
             </h2>
-            <p className="text-white/50 max-w-xl mx-auto">
+            <p className="text-muted-foreground max-w-xl mx-auto">
               Tudo que voce precisa em uma unica plataforma para nunca mais perder um paciente.
             </p>
           </motion.div>
@@ -837,14 +837,14 @@ const OfertaAgendaLotadaPage = () => {
               <motion.div
                 key={f.title}
                 variants={staggerItem}
-                className="group glass-dark rounded-xl overflow-hidden border border-white/10 hover:border-primary/30 transition-all duration-300 hover:-translate-y-1"
+                className="group bg-white rounded-xl overflow-hidden border border-border hover:border-primary/30 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="h-32 bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
                   <f.icon size={48} weight="duotone" className="text-primary" />
                 </div>
                 <div className="p-5">
-                  <h3 className="font-sans text-lg font-semibold mb-2 text-white">{f.title}</h3>
-                  <p className="text-white/50 text-sm leading-relaxed">{f.description}</p>
+                  <h3 className="font-sans text-lg font-semibold mb-2 text-secondary">{f.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{f.description}</p>
                 </div>
               </motion.div>
             ))}

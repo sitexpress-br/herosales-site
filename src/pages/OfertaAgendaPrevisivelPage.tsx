@@ -230,28 +230,28 @@ const OfertaAgendaPrevisivelPage = () => {
       </section>
 
       {/* ═══════ BACTÉRIAS ANTI-FATURAMENTO ═══════ */}
-      <section className="py-20 md:py-28">
+      <section className="py-20 md:py-28 bg-background">
         <div className="container mx-auto px-6 max-w-5xl">
           <motion.div initial="hidden" whileInView="visible" viewport={defaultViewport} variants={fadeInUp} className="text-center mb-16">
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mb-4">
-              As Bactérias <em className="text-red-400 italic">Anti-Faturamento</em> Que Contaminam Sua Agenda
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mb-4 text-secondary">
+              As Bactérias <em className="text-red-500 italic">Anti-Faturamento</em> Que Contaminam Sua Agenda
             </h2>
           </motion.div>
 
           <motion.div initial="hidden" whileInView="visible" viewport={defaultViewport} variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {bacteria.map((b) => (
-              <motion.div key={b.title} variants={staggerItem} className="glass-dark rounded-xl p-6 border border-red-500/20 hover:border-red-500/40 transition-all">
-                <div className="w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center mb-4">
-                  <b.icon size={24} weight="duotone" className="text-red-400" />
+              <motion.div key={b.title} variants={staggerItem} className="bg-white rounded-xl p-6 border border-red-500/30 hover:border-red-500/50 shadow-sm hover:shadow-md transition-all">
+                <div className="w-12 h-12 rounded-lg bg-red-50 flex items-center justify-center mb-4">
+                  <b.icon size={24} weight="duotone" className="text-red-500" />
                 </div>
-                <h3 className="font-semibold text-lg mb-2 text-white">{b.title}</h3>
-                <p className="text-white/50 text-sm leading-relaxed">{b.description}</p>
+                <h3 className="font-semibold text-lg mb-2 text-secondary">{b.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{b.description}</p>
               </motion.div>
             ))}
           </motion.div>
 
           <motion.div initial="hidden" whileInView="visible" viewport={defaultViewport} variants={fadeInUp} className="text-center mt-10">
-            <p className="text-white/50 text-sm mb-6">👉 Se você reconheceu algum sintoma, fique tranquilo: <strong className="text-white/80">o problema não é sua clínica.</strong></p>
+            <p className="text-muted-foreground text-sm mb-6">👉 Se você reconheceu algum sintoma, fique tranquilo: <strong className="text-secondary/80">o problema não é sua clínica.</strong></p>
             <CtaButton />
           </motion.div>
         </div>
