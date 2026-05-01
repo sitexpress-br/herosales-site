@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PaidTrafficAnimation from "@/components/animations/PaidTrafficAnimation";
 import CRMAnimation from "@/components/animations/CRMAnimation";
 import AIAttendanceAnimation from "@/components/animations/AIAttendanceAnimation";
@@ -194,10 +194,17 @@ const inclusos = [
 // ─── Page Component ──────────────────────────────────────────
 const EstruturaMarketingClinicasPage = () => {
   const [formOpen, setFormOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const openForm = () => setFormOpen(true);
   const scrollToDiagnostico = () => {
     document.getElementById('diagnostico')?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div className="bg-secondary min-h-screen text-secondary-foreground selection-gold">
@@ -208,20 +215,55 @@ const EstruturaMarketingClinicasPage = () => {
       />
 
       {/* ═══════ HEADER ═══════ */}
-      <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-4">
-        <div className="w-full max-w-[1400px] flex items-center justify-center sm:justify-between px-6 py-3 rounded-[20px] bg-secondary/80 backdrop-blur-2xl border border-white/15">
-          <div className="bg-[#1a1535] rounded-[0px_0px_12px_12px] px-4 py-2 -mb-5">
-            <img src={logo} alt="Hero Sales" className="w-56 h-auto lg:w-64 lg:h-14 origin-left object-contain drop-shadow-lg" />
-          </div>
-          <button
-            onClick={scrollToDiagnostico}
-            className="hidden sm:flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-[#6e5bbb] hover:bg-[#5d4ca3] text-white font-bold text-sm shadow-lg whitespace-nowrap transition-colors group"
+      <motion.header
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "px-0" : "px-4 lg:px-6"}`}
+      >
+        <div
+          className={`mx-auto transition-all duration-300 ${isScrolled ? "mt-0" : "mt-4"}`}
+          style={{ maxWidth: "1400px" }}
+        >
+          <div
+            className={`transition-all duration-300 ${
+              isScrolled
+                ? "rounded-[0px_0px_12px_12px] bg-secondary/80 backdrop-blur-2xl border-b border-white/15 shadow-[0_8px_32px_rgba(0,0,0,0.25)]"
+                : "rounded-[20px] bg-secondary/80 backdrop-blur-2xl border border-white/15"
+            }`}
           >
-            Quero um diagnóstico gratuito
-            <ArrowRight size={16} weight="bold" className="group-hover:translate-x-1 transition-transform" />
-          </button>
+            <div className="px-6">
+              <div className="flex items-center justify-between h-16">
+                {/* Logo */}
+                <motion.a
+                  href="/"
+                  className={`flex items-center gap-3 relative z-10 transition-all duration-300 ${
+                    isScrolled
+                      ? "bg-[#1a1535] rounded-[0px_0px_12px_12px] px-4 py-2 -mb-2"
+                      : "-mb-6"
+                  }`}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <img
+                    src={logo}
+                    alt="Hero Sales"
+                    className="w-56 h-auto lg:w-64 lg:h-14 origin-left object-contain drop-shadow-lg"
+                  />
+                </motion.a>
+
+                <button
+                  onClick={scrollToDiagnostico}
+                  className="hidden sm:flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-[#6e5bbb] hover:bg-[#5d4ca3] text-white font-bold text-sm shadow-lg whitespace-nowrap transition-colors group"
+                >
+                  Quero um diagnóstico gratuito
+                  <ArrowRight size={16} weight="bold" className="group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-      </header>
+      </motion.header>
 
       {/* ═══════ HERO (DOBRA 1) — alinhado à esquerda ═══════ */}
       <section className="relative flex items-center justify-center overflow-hidden pt-36 md:pt-40 pb-20 md:pb-28">
