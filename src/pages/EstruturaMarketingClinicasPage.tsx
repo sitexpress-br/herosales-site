@@ -33,7 +33,7 @@ import {
 import TrailFrame from "@/components/trail/TrailFrame";
 
 import { Button } from "@/components/ui/button";
-import { LeadCaptureDialog } from "@/components/LeadCaptureDialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 const logo = "https://msgsndr-private.storage.googleapis.com/companyPhotos/0599742e-e4db-4132-b44e-f3efdf215411.png";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { Testimonials } from "@/components/sessoes/Testimonials";
@@ -1001,7 +1001,16 @@ const EstruturaMarketingClinicasPage = () => {
         </div>
       </footer>
 
-      <LeadCaptureDialog open={formOpen} onOpenChange={setFormOpen} />
+      <Dialog open={formOpen} onOpenChange={setFormOpen}>
+        <DialogContent className="max-w-md w-[calc(100vw-2rem)] sm:w-full p-0 overflow-hidden border border-white/15 rounded-xl bg-secondary">
+          <DialogTitle className="sr-only">Conteúdo em breve</DialogTitle>
+          <div className="px-8 py-16 flex items-center justify-center">
+            <p className="font-display text-2xl text-white text-center">
+              Conteúdo em breve
+            </p>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
