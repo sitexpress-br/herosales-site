@@ -262,14 +262,24 @@ const EstruturaMarketingClinicasPage = () => {
             </motion.h1>
 
             {/* Subtítulo / equação */}
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.25 }}
-              className="text-base md:text-xl text-primary font-display italic max-w-3xl leading-relaxed"
+              className="flex flex-wrap items-center gap-x-3 gap-y-2 max-w-4xl"
             >
-              Tecnologia <span className="text-white/70 not-italic">→</span> Geração de Demanda <span className="text-white/70 not-italic">→</span> Conversão de Alto Impacto
-            </motion.p>
+              <span className="inline-flex items-center px-4 py-2 rounded-lg bg-primary/15 border border-primary/40 text-primary font-display text-lg md:text-2xl font-bold tracking-tight shadow-[0_0_20px_hsl(var(--primary)/0.2)]">
+                Tecnologia
+              </span>
+              <span className="text-primary text-2xl md:text-3xl font-bold">→</span>
+              <span className="inline-flex items-center px-4 py-2 rounded-lg bg-primary/15 border border-primary/40 text-primary font-display text-lg md:text-2xl font-bold tracking-tight shadow-[0_0_20px_hsl(var(--primary)/0.2)]">
+                Geração de Demanda
+              </span>
+              <span className="text-primary text-2xl md:text-3xl font-bold">→</span>
+              <span className="inline-flex items-center px-4 py-2 rounded-lg bg-primary/15 border border-primary/40 text-primary font-display text-lg md:text-2xl font-bold tracking-tight shadow-[0_0_20px_hsl(var(--primary)/0.2)]">
+                Conversão de Alto Impacto
+              </span>
+            </motion.div>
 
             {/* Texto apoio */}
             <motion.p
@@ -519,9 +529,19 @@ const EstruturaMarketingClinicasPage = () => {
               Trabalhamos com quem{" "}
               <em className="text-primary italic">leva isso a sério</em>
             </h2>
-            <p className="text-primary text-base md:text-lg max-w-3xl mx-auto font-display italic mb-4">
-              Tecnologia <span className="text-secondary/60 not-italic">→</span> Geração de Demanda <span className="text-secondary/60 not-italic">→</span> Conversão de Alto Impacto
-            </p>
+            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 max-w-4xl mx-auto mb-4">
+              <span className="inline-flex items-center px-4 py-2 rounded-lg bg-primary/10 border border-primary/40 text-primary font-display text-base md:text-xl font-bold tracking-tight shadow-sm">
+                Tecnologia
+              </span>
+              <span className="text-primary text-xl md:text-2xl font-bold">→</span>
+              <span className="inline-flex items-center px-4 py-2 rounded-lg bg-primary/10 border border-primary/40 text-primary font-display text-base md:text-xl font-bold tracking-tight shadow-sm">
+                Geração de Demanda
+              </span>
+              <span className="text-primary text-xl md:text-2xl font-bold">→</span>
+              <span className="inline-flex items-center px-4 py-2 rounded-lg bg-primary/10 border border-primary/40 text-primary font-display text-base md:text-xl font-bold tracking-tight shadow-sm">
+                Conversão de Alto Impacto
+              </span>
+            </div>
             <p className="text-secondary/70 max-w-2xl mx-auto text-base md:text-lg">
               Por isso acreditamos que faça sentido para quem:
             </p>
