@@ -229,28 +229,25 @@ const EstruturaMarketingClinicasPage = () => {
             className={`transition-all duration-300 ${
               isScrolled
                 ? "rounded-[0px_0px_12px_12px] bg-secondary/80 backdrop-blur-2xl border-b border-white/15 shadow-[0_8px_32px_rgba(0,0,0,0.25)]"
-                : "rounded-[20px] bg-secondary/80 backdrop-blur-2xl border border-white/15"
+                : "rounded-[20px] bg-transparent border border-transparent"
             }`}
           >
             <div className="px-6">
               <div className="flex items-center justify-between h-16">
                 {/* Logo */}
-                <motion.a
-                  href="/"
+                <div
                   className={`flex items-center gap-3 relative z-10 transition-all duration-300 ${
                     isScrolled
                       ? "bg-[#1a1535] rounded-[0px_0px_12px_12px] px-4 py-2 -mb-2"
                       : "-mb-6"
                   }`}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
                 >
                   <img
                     src={logo}
                     alt="Hero Sales"
                     className="w-56 h-auto lg:w-64 lg:h-14 origin-left object-contain drop-shadow-lg"
                   />
-                </motion.a>
+                </div>
 
                 <button
                   onClick={scrollToDiagnostico}
